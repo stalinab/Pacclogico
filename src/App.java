@@ -4,7 +4,11 @@ import DataAccessComponent.AnimalDAO;
 import DataAccessComponent.ClasificacionDAO;
 import DataAccessComponent.DTO.AnimalDTO;
 import UserInterface.Form.SplashScreenForm;
+<<<<<<< HEAD
+import UserInterface.Form.MainForm;
+=======
 
+>>>>>>> b050ea316e3c3beb1f6f8bc654c5878a809e0e7b
 public class App {
     public static void main(String[] args) throws Exception {
         try {
@@ -32,5 +36,9 @@ public class App {
             // Manejo de excepciones
             e.printStackTrace();
         }
+<<<<<<< HEAD
+        MainForm  mf = new MainForm("APP");
+=======
+>>>>>>> b050ea316e3c3beb1f6f8bc654c5878a809e0e7b
     }
 }
