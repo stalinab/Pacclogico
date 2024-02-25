@@ -10,6 +10,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import DataAccessComponent.DTO.ClasificacionDTO;
+import Framework.PatException;
 
 public class ClasificacionDAO extends SQLiteDataHelper implements IDAO<ClasificacionDTO>  {
 
@@ -123,5 +124,21 @@ public class ClasificacionDAO extends SQLiteDataHelper implements IDAO<Clasifica
         catch (SQLException e) {
             throw new Exception(getClass()+"getMaxIdClasificacion",e);
         }
+    }
+
+    @Override
+    public int getMaxId() throws Exception{
+        int maxId =0;
+        String query = "SELECT MAX(IdClasificacion) FROM Clasificacion WHERE Estado = 'A'";
+        try {
+            Connection conn = openConnection();
+            Statement  stmt = conn.createStatement();
+            ResultSet  rs   = stmt.executeQuery(query);
+            if (rs.next())
+                maxId = rs.getInt(1);
+        } catch (SQLException e) {
+            throw new PatException(e.getMessage(), getClass().getName(), "getMaxId()");
+        }
+        return maxId;
     }
 }

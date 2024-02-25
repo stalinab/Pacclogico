@@ -19,8 +19,7 @@ public abstract class SQLiteDataHelper {
     private static String DBPathConnection = "jdbc:sqlite:database/Pacclogico.sqlite";
     private static Connection connection = null;
 
-    protected SQLiteDataHelper(){
-    }
+    protected SQLiteDataHelper(){}
 
     protected static synchronized Connection openConnection() throws Exception{
         try {
@@ -31,5 +30,14 @@ public abstract class SQLiteDataHelper {
             throw e;
         }
         return connection;
+    }
+
+    protected static void closeConnection() throws Exception {
+        try {
+            if (connection != null)
+                connection.close();
+        } catch (SQLException e) {
+            throw e;
+        }
     }
 }
