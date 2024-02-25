@@ -4,9 +4,6 @@
     "java.project.referencedLibraries": [
         "lib/**/*.jar"
     ],
-<<<<<<< HEAD
-    "java.debug.settings.onBuildFailureProceed": true
-=======
+    "java.debug.settings.onBuildFailureProceed": true,
     "workbench.iconTheme": "pcode-icon-theme-dark-spesifik"
->>>>>>> 710bc3eae170c703151a1efd9ad0934520ec9aae
 }

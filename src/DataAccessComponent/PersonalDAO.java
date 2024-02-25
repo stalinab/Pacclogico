@@ -26,7 +26,7 @@ import Framework.PatException;
 public class PersonalDAO extends SQLiteDataHelper implements IDAO<PersonalDTO> {
     @Override
     public boolean create(PersonalDTO entity) throws Exception{
-        String query = "INSERT INTO Cita(IdPersonal_Padre, Nombre)"
+        String query = "INSERT INTO Personal(IdPersonal_Padre, Nombre)"
                      + "VALUES(?, ?);";
         try {
             Connection conn = openConnection();
@@ -98,7 +98,7 @@ public class PersonalDAO extends SQLiteDataHelper implements IDAO<PersonalDTO> {
                                                rs.getString(7));
             }
         } catch (SQLException e) {
-            throw new PatException(e.getMessage(), getClass().getName(), "readBy()");
+            throw new PatException(e.getMessage(), getClass().getName(), "read()");
         }
         return oPersonalDTO;
     }
