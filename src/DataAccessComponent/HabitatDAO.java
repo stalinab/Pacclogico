@@ -125,4 +125,10 @@ public class HabitatDAO extends SQLiteDataHelper implements IDAO<HabitatDTO> {
             throw new Exception(getClass()+"getMaxIdHabitat",e);
         }
     }
+
+    @Override
+    public int getMaxId() throws Exception {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getMaxId'");
+    }
 }
