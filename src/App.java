@@ -3,10 +3,14 @@ import java.util.List;
 import DataAccessComponent.AnimalDAO;
 import DataAccessComponent.ClasificacionDAO;
 import DataAccessComponent.DTO.AnimalDTO;
+import UserInterface.Form.SplashScreenForm;
 
 public class App {
     public static void main(String[] args) throws Exception {
         try {
+            //Metodo para visualizar el SplashScreen
+            SplashScreenForm.show();
+            
             // Supongamos que tienes una instancia de la clase donde se encuentra el método readAllEstructura
             // y que su nombre es AnimalDAO. Reemplaza AnimalDAO con el nombre correcto de tu clase si es diferente.
             AnimalDAO animalDAO = new AnimalDAO();
