@@ -16,7 +16,7 @@ CREATE TABLE Animal(
         ,IdHabitat              INTEGER  REFERENCES Habitat (IdHabitat)
         ,IdClasificacion        INTEGER  REFERENCES Clasificacion (IdClasificacion)
         ,Nombre                 VARCHAR(50)  NOT NULL UNIQUE
-        ,URL                    VARCHAR(256)  NOT NULL UNIQUE
+        ,Qr                    VARCHAR(256)  NOT NULL UNIQUE
         ,Observacion            TEXT
         ,Estado                 CHAR NOT NULL DEFAULT ('A')
         ,FechaCrea              DATETIME NOT NULL  DEFAULT (datetime('now'))

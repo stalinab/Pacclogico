@@ -10,14 +10,16 @@ import DataAccessComponent.DTO.AnimalDTO;
 public class AnimalDAO extends SQLiteDataHelper {
     public AnimalDTO readBy(Integer id) throws Exception {
         AnimalDTO oS = new AnimalDTO();
-        String query ="SELECT   An.IdAnimal IdAnimal,Ha.Nombre Habitat,Cla.Nombre Clasificacion,An.Nombre NombreAnimal"
-                    +"FROM Animal      An"
-                    +"JOIN Habitat     Ha ON An.IdHabitat = Ha.IdHabitat"
-                    +"JOIN Clasificacion     Cla ON An.IdClasificacion = Cla.IdClasificacion"
-                    +"WHERE   An.Estado = 'A'"
-                    +"AND     Ha.Estado = 'A'"
-                    +"AND     Cla.Estado = 'A'"
-                    +"AND     An.IdAnimal = "+ id.toString() ;
+        String query ="SELECT An.IdAnimal AS IdAnimal, Se.Nombre AS Sexo, Ha.Nombre AS Habitat, Cla.Nombre AS Clasificacion, An.Nombre AS NombreAnimal, An.Qr AS Qr "
+                    + "FROM Animal An "
+                    + "JOIN Habitat Ha ON An.IdHabitat = Ha.IdHabitat "
+                    + "JOIN Clasificacion Cla ON An.IdClasificacion = Cla.IdClasificacion "
+                    + "JOIN Sexo Se ON An.IdSexo = Se.IdSexo "
+                    + "WHERE An.Estado = 'A' "
+                    + "AND Se.Estado = 'A'"
+                    + "AND Ha.Estado = 'A' "
+                    + "AND Cla.Estado = 'A' "
+                    + "AND An.IdAnimal = " + id.toString();
         try {
             Connection conn = openConnection();         // conectar a DB     
             Statement  stmt = conn.createStatement();   // CRUD : select * ...    
@@ -39,13 +41,15 @@ public class AnimalDAO extends SQLiteDataHelper {
 
     public List<AnimalDTO> readAll() throws Exception {
         List <AnimalDTO> lst = new ArrayList<>();
-        String query ="SELECT   An.IdAnimal IdAnimal,Ha.Nombre Habitat,Cla.Nombre Clasificacion,An.Nombre NombreAnimal"
-                    +"FROM Animal      An"
-                    +"JOIN Habitat     Ha ON An.IdHabitat = Ha.IdHabitat"
-                    +"JOIN Clasificacion     Cla ON An.IdClasificacion = Cla.IdClasificacion"
-                    +"WHERE   An.Estado = 'A'"
-                    +"AND     Ha.Estado = 'A'"
-                    +"AND     Cla.Estado = 'A'";
+        String query ="SELECT An.IdAnimal AS IdAnimal, Se.Nombre AS Sexo, Ha.Nombre AS Habitat, Cla.Nombre AS Clasificacion, An.Nombre AS NombreAnimal, An.Qr AS Qr "
+                        + "FROM Animal An "
+                        + "JOIN Habitat Ha ON An.IdHabitat = Ha.IdHabitat "
+                        + "JOIN Clasificacion Cla ON An.IdClasificacion = Cla.IdClasificacion "
+                        + "JOIN Sexo Se ON An.IdSexo = Se.IdSexo "
+                        + "WHERE An.Estado = 'A' "
+                        + "AND Se.Estado = 'A'"
+                        + "AND Ha.Estado = 'A' "
+                        + "AND Cla.Estado = 'A' ";
         try {
             Connection conn = openConnection();         // conectar a DB     
             Statement  stmt = conn.createStatement();   // CRUD : select * ...    
@@ -68,18 +72,16 @@ public class AnimalDAO extends SQLiteDataHelper {
 
     public List<AnimalDTO> readAllEstructura(String tipo)  throws Exception {
         List <AnimalDTO> lst = new ArrayList<>();
-        String query =
-        "SELECT   An.IdAnimal IdAnimal,Ha.Nombre Habitat,Cla.Nombre Clasificacion,An.Nombre NombreAnimal"
-                    +"FROM Animal      An"
-                    +"JOIN Habitat     Ha ON An.IdHabitat = Ha.IdHabitat"
-                    +"JOIN Clasificacion     Cla ON An.IdClasificacion = Cla.IdClasificacion"
-                    +"WHERE   An.Estado = 'A'"
-                    +"AND     Ha.Estado = 'A'"
-                    +"AND     Cla.Estado = 'A'"
-                    +"AND    lower(Ha.Nombre) = " + ((tipo.equals("Selva"))
-                                        ? "'Arboles'".toLowerCase() 
-                                        : "'Semiacuatico'".toLowerCase());
-        System.out.println(query);                                    
+        String query = "SELECT An.IdAnimal AS IdAnimal, Se.Nombre AS Sexo, Ha.Nombre AS Habitat, Cla.Nombre AS Clasificacion, An.Nombre AS NombreAnimal, An.Qr AS Qr "
+                    + "FROM Animal An "
+                    + "JOIN Habitat Ha ON An.IdHabitat = Ha.IdHabitat "
+                    + "JOIN Clasificacion Cla ON An.IdClasificacion = Cla.IdClasificacion "
+                    + "JOIN Sexo Se ON An.IdSexo = Se.IdSexo "
+                    + "WHERE An.Estado = 'A' "
+                    + "AND Se.Estado = 'A' "
+                    + "AND Ha.Estado = 'A' "
+                    + "AND Cla.Estado = 'A' "
+                    + "AND lower(Ha.Nombre) = " + (tipo.equals("Selva") ? "'Arboles'" : "'" + tipo + "'").toLowerCase();                               
         try {
             Connection conn = openConnection();         // conectar a DB     
             Statement  stmt = conn.createStatement();   // CRUD : select * ...    

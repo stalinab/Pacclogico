@@ -6,14 +6,14 @@ public class AnimalDTO {
     private String Habitat         ;
     private String Clasificacion   ;
     private String Nombre         ;
-    private String URL            ;
-    public AnimalDTO(int idAnimal, String sexo, String habitat, String clasificacion, String nombre, String uRL) {
+    private String Qr            ;
+    public AnimalDTO(int idAnimal, String sexo, String habitat, String clasificacion, String nombre, String qr) {
         IdAnimal = idAnimal;
         Sexo = sexo;
         Habitat = habitat;
         Clasificacion = clasificacion;
         Nombre = nombre;
-        URL = uRL;
+        Qr = qr;
     }
     public AnimalDTO() {
         //TODO Auto-generated constructor stub
@@ -48,10 +48,11 @@ public class AnimalDTO {
     public void setNombre(String nombre) {
         Nombre = nombre;
     }
-    public String getURL() {
-        return URL;
+    public String getQr() {
+        return Qr;
     }
-    public void setURL(String uRL) {
-        URL = uRL;
+    public void setQr(String qr) {
+        Qr = qr;
     }
+    
 }
