@@ -20,6 +20,9 @@ public class HabitatDTO {
         FechaCrea = fechaCrea;
         FechaModifica = fechaModifica;
     }
+    public HabitatDTO() {
+        //TODO Auto-generated constructor stub
+    }
     public int getIdHabitat() {
         return IdHabitat;
     }

@@ -23,6 +23,9 @@ public class CuentaDTO {
         FechaCrea = fechaCrea;
         FechaModifica = fechaModifica;
     }
+    public CuentaDTO() {
+        //TODO Auto-generated constructor stub
+    }
     public int getIdCuenta() {
         return IdCuenta;
     }

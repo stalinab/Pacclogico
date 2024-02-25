@@ -10,7 +10,7 @@ Fecha: 24/02/1014
 Script: Ingreso de datos Animal
 */
 INSERT INTO Animal 
-    (IdSexo, IdHabitat, IdClasificacion, Nombre, Informacion)
+    (IdSexo, IdHabitat, IdClasificacion, Nombre, Qr)
 VALUES 
     (1,2,3,"Leon","google.com");
 SELECT   An.IdAnimal IdAnimal
@@ -23,7 +23,7 @@ JOIN Clasificacion     Cla ON An.IdClasificacion = Cla.IdClasificacion
 WHERE   An.Estado = "A"
 AND     Ha.Estado = "A"
 AND     Cla.Estado = "A";
-SELECT   An.IdAnimal IdAnimal,Ha.Nombre Habitat,Cla.Nombre Clasificacion,An.Nombre NombreAnimal
+SELECT   An.IdAnimal IdAnimal,Ha.Nombre Habitat,Cla.Nombre Clasificacion,An.Nombre NombreAnimal, An.Qr As Qr
 FROM Animal      An
 JOIN Habitat     Ha ON An.IdHabitat = Ha.IdHabitat
 JOIN Clasificacion     Cla ON An.IdClasificacion = Cla.IdClasificacion
