@@ -7,9 +7,9 @@
 |______________________________________|
 Autor: ErickCaiced2
 Fecha: 24/02/1014
-Script: Ingreso de datos Cuentas
+Script: Ingreso de datos Cuenta
 */
-INSERT INTO Cuentas 
+INSERT INTO Cuenta 
     (IdPersonal, Correo, Password)
 VALUES 
     (1, "admin.developer@gmail.com", "admin22")

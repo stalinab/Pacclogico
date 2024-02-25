@@ -16,7 +16,7 @@ src: Creación del SQLiteJavaHelper
 */
 
 public abstract class SQLiteDataHelper {
-    private static String DBPathConnection = "jdbc:sqlite:database/POLITINDER.sqlite";
+    private static String DBPathConnection = "jdbc:sqlite:database/Pacclogico.sqlite";
     private static Connection connection = null;
 
     protected SQLiteDataHelper(){
