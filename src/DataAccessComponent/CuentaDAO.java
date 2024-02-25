@@ -37,4 +37,10 @@ public class CuentaDAO extends SQLiteDataHelper implements IDAO<CuentaDTO> {
         throw new UnsupportedOperationException("Unimplemented method 'delete'");
     }
 
+    @Override
+    public int getMaxId() throws Exception{
+        int maxId =0;
+        return maxId;
+    }
+
 }
