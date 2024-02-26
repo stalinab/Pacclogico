@@ -16,30 +16,23 @@ public class AnimalBL {
     }
 
     public AnimalDTO getBy(int IdAnimal) throws Exception{
-        a = animalDao.readBy(IdAnimal);
+        a = animalDao.read(IdAnimal);
         return a;
     }
 
-    // public boolean add(String Sexo,String Habitat, String Clasificacion, String Nombre, String Qr) throws Exception{
-    //     a = new AnimalDTO();
-    //     a.setSexo(Sexo);
-    //     a.setHabitat(Habitat);
-    //     a.setClasificacion(Clasificacion);
-    //     a.setNombre(Nombre);
-    //     a.setQr(Qr);
-    //     return animalDao.create(a);
-    // }
+    public boolean add(AnimalDTO animalDTO) throws Exception{
+        return animalDao.create(animalDTO);
+    }
 
-    // public boolean update(int IdAnimal, String Sexo,String Habitat, String Clasificacion, String Nombre, String Qr) throws Exception{
-    //     a = new AnimalDTO();
-    //     a.setIdAnimal(IdAnimal);
-    //     a.setSexo(Sexo);
-    //     a.setHabitat(Habitat);
-    //     a.setClasificacion(Clasificacion);
-    //     return animalDao.update(a);
-    // }
+    public boolean update(AnimalDTO animalDTO) throws Exception{
+        return animalDao.update(animalDTO);
+    }
 
-    // public boolean delete(int IdAnimal) throws Exception{
-    //     return animalDao.delete(IdAnimal);
-    // }
+    public boolean delete(int IdAnimal) throws Exception{
+        return animalDao.delete(IdAnimal);
+    }
+
+    public int getMaxId() throws Exception {
+        return animalDao.getMaxId();
+    }
 }
