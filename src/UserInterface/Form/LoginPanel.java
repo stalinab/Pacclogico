@@ -73,7 +73,12 @@ public class LoginPanel extends JPanel {
                     JOptionPane.showMessageDialog(LoginPanel.this, "Login Exitoso", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                     usernameField.setText("");
                     passwordField.setText("");
-                    transicionDespuesDeLogin();
+                    try {
+                        transicionDespuesDeLogin();
+                        
+                    } catch (Exception e1) {
+                        // TODO: handle exception
+                    }
                 } else {
                     JOptionPane.showMessageDialog(LoginPanel.this, "Autenticación fallida", "Error", JOptionPane.ERROR_MESSAGE);
                 }
