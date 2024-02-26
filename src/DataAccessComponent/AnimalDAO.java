@@ -29,12 +29,13 @@ public class AnimalDAO extends SQLiteDataHelper implements IDAO <AnimalDTO> {
             Statement  stmt = conn.createStatement();   // CRUD : select * ...    
             ResultSet  rs   = stmt.executeQuery(query);  // ejecutar la
             while (rs.next()) {
-                oS = new AnimalDTO(rs.getInt(1)              
-                                    ,rs.getString(2)         
-                                    ,rs.getString(3)
-                                    ,rs.getString(4)
-                                    ,rs.getString(5)
-                                    ,rs.getString(6));     
+                oS = new AnimalDTO(rs.getInt(1), 
+                rs.getString(2), 
+                rs.getString(3), 
+                rs.getString(4), 
+                rs.getString(5),
+                rs.getString(6),
+                rs.getString(7));    
             }
         } 
         catch (SQLException e) {
@@ -58,12 +59,13 @@ public class AnimalDAO extends SQLiteDataHelper implements IDAO <AnimalDTO> {
             Statement  stmt = conn.createStatement();   // CRUD : select * ...    
             ResultSet rs   = stmt.executeQuery(query);    // ejecutar la
             while (rs.next()) {
-                AnimalDTO s = new AnimalDTO(rs.getInt(1)              
-                                                ,rs.getString(2)         
-                                                ,rs.getString(3)
-                                                ,rs.getString(4)
-                                                ,rs.getString(5)
-                                                ,rs.getString(6));        // LocalidaTipo  
+                AnimalDTO s = new AnimalDTO(rs.getInt(1), 
+                rs.getString(2), 
+                rs.getString(3), 
+                rs.getString(4), 
+                rs.getString(5),
+                rs.getString(6),
+                rs.getString(7));       // LocalidaTipo  
                 lst.add(s);
             }
         } 
@@ -90,12 +92,13 @@ public class AnimalDAO extends SQLiteDataHelper implements IDAO <AnimalDTO> {
             Statement  stmt = conn.createStatement();   // CRUD : select * ...    
             ResultSet rs   = stmt.executeQuery(query);    // ejecutar la
             while (rs.next()) {
-                AnimalDTO s = new AnimalDTO(rs.getInt(1)              
-                                            ,rs.getString(2)         
-                                            ,rs.getString(3)
-                                            ,rs.getString(4)
-                                            ,rs.getString(5)
-                                            ,rs.getString(6));          // LocalidaTipo  
+                AnimalDTO s = new AnimalDTO(rs.getInt(1), 
+                rs.getString(2), 
+                rs.getString(3), 
+                rs.getString(4), 
+                rs.getString(5),
+                rs.getString(6),
+                rs.getString(7));          // LocalidaTipo  
                 lst.add(s);
             }
         } 
@@ -191,16 +194,13 @@ public class AnimalDAO extends SQLiteDataHelper implements IDAO <AnimalDTO> {
          //return stmt.executeQuery(query);  // RESULTADO DE LO QUE VIENE DE LA CLASE, ENTONCES USAREMOS:
          
          while (rs.next()) {
-            AnimalDTO oDTOAnimal = new AnimalDTO (rs.getInt(1),
-                                                    rs.getInt(2),
-                                                    rs.getInt(3),
-                                                    rs.getInt(4),  
-                                                    rs.getString(5), 
-                                                    rs.getString(6), 
-                                                    rs.getString(7), 
-                                                    rs.getString(8),
-                                                    rs.getString(8),
-                                                    rs.getString(9));
+            AnimalDTO oDTOAnimal = new AnimalDTO (rs.getInt(1), 
+            rs.getString(2), 
+            rs.getString(3), 
+            rs.getString(4), 
+            rs.getString(5),
+            rs.getString(6),
+            rs.getString(7));
              lst.add(oDTOAnimal);//cada vez que traemos una fila agregamos a una lista.
          }
      }catch(SQLException e){
@@ -228,16 +228,13 @@ public class AnimalDAO extends SQLiteDataHelper implements IDAO <AnimalDTO> {
             Statement  stmt = conn.createStatement();   // CRUD : select * ...    
             ResultSet rs   = stmt.executeQuery(query);  // ejecutar la
             while (rs.next()) {
-                AnimalDTO oDTOAnimal1 = new AnimalDTO (rs.getInt(1),
-                                                                rs.getInt(2),
-                                                                rs.getInt(3),
-                                                                rs.getInt(4),  
-                                                                rs.getString(5), 
-                                                                rs.getString(6), 
-                                                                rs.getString(7), 
-                                                                rs.getString(8),
-                                                                rs.getString(8),
-                                                                rs.getString(9));    // FechaModifica
+                AnimalDTO oDTOAnimal1 = new AnimalDTO (rs.getInt(1), 
+                rs.getString(2), 
+                rs.getString(3), 
+                rs.getString(4), 
+                rs.getString(5),
+                rs.getString(6),
+                rs.getString(7));    // FechaModifica
                 oDTOAnimal=oDTOAnimal1;    }
         } 
         catch (SQLException e) {
