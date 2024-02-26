@@ -1,22 +1,27 @@
 package DataAccessComponent.DTO;
 
 public class AnimalDTO {
-    private int IdAnimal          ;
-    private String Sexo            ;
-    private String Habitat         ;
-    private String Clasificacion   ;
+    private Integer IdAnimal          ;
+    private String Sexo           ;
+    private String Habitat        ;
+    private String Clasificacion  ;
     private String Nombre         ;
-    private String Qr            ;
-    public AnimalDTO(int idAnimal, String sexo, String habitat, String clasificacion, String nombre, String qr) {
-        IdAnimal = idAnimal;
-        Sexo = sexo;
-        Habitat = habitat;
-        Clasificacion = clasificacion;
-        Nombre = nombre;
-        Qr = qr;
-    }
-    public AnimalDTO() {
-        //TODO Auto-generated constructor stub
+    private String Qr             ;
+    private String Observacion    ;
+    private String Estado         ;
+    private String FechaCrea      ;
+    private String FechaModifica  ;
+    public AnimalDTO() {}
+
+    public AnimalDTO(Integer idAnimal, String sexo, String habitat, String clasificacion, String nombre, String qr, String estado) {
+              this.IdAnimal = idAnimal;
+              this.Sexo = sexo;
+              this.Habitat = habitat;
+              this.Clasificacion = clasificacion;
+              this.Nombre= nombre;
+              this.Qr= qr;
+              this.Estado = estado;
+
     }
     public int getIdAnimal() {
         return IdAnimal;
@@ -53,6 +58,30 @@ public class AnimalDTO {
     }
     public void setQr(String qr) {
         Qr = qr;
+    }
+    public String getObservacion() {
+        return Observacion;
+    }
+    public void setObservacion(String observacion) {
+        Observacion = observacion;
+    }
+    public String getEstado() {
+        return Estado;
+    }
+    public void setEstado(String estado) {
+        Estado = estado;
+    }
+    public String getFechaCrea() {
+        return FechaCrea;
+    }
+    public void setFechaCrea(String fechaCrea) {
+        FechaCrea = fechaCrea;
+    }
+    public String getFechaModifica() {
+        return FechaModifica;
+    }
+    public void setFechaModifica(String fechaModifica) {
+        FechaModifica = fechaModifica;
     }
     
 }

@@ -14,8 +14,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -206,7 +204,7 @@ public class PnlPersonal extends JPanel implements ActionListener{
  ********************************/ 
 
     private PatLabel 
-            lblTitulo               = new PatLabel("PERSONA ROL"    ),
+            lblTitulo               = new PatLabel("PERSONAL"    ),
             lblIdPersonal_Padre   = new PatLabel("IdPersonal_Padre: "),
             lblNombre               = new PatLabel("Nombre: "),
             lblTotalReg             = new PatLabel("  0 de 0  ");

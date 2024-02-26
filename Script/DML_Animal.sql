@@ -12,7 +12,7 @@ Script: Ingreso de datos Animal
 INSERT INTO Animal 
     (IdSexo, IdHabitat, IdClasificacion, Nombre, Qr)
 VALUES 
-    (1,2,3,"Leon","google.com");
+    (1,2,1,"Jirafa","google.com");
 SELECT   An.IdAnimal IdAnimal
     ,Ha.Nombre Habitat
     ,Cla.Nombre Clasificacion

@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 public class JirafaForm extends JFrame{
     public JirafaForm(){
         JLabel label = new JLabel();
-        String imagePath = "../Pacclogico/src/UserInterface/Resource/Img/Jirafa.jpg"; 
+        String imagePath = "../Pacclogico-master/src/UserInterface/Resource/Img/Leon.png"; 
         // Lee la imagen desde el archivo y la convierte en un ImageIcon
         ImageIcon icon = new ImageIcon(imagePath);
         // Obtiene la imagen del ImageIcon
