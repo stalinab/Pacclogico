@@ -88,7 +88,7 @@ public class LoginPanel extends JPanel {
     /**
      * Metodo que se encarga de transcicionar
      */
-    private void transicionDespuesDeLogin() {
+    private void transicionDespuesDeLogin() throws Exception{
         SwingUtilities.getWindowAncestor(this).dispose();
         MainForm mf = new MainForm("APP");
     }
