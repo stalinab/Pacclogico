@@ -14,6 +14,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -31,6 +33,7 @@ import DataAccessComponent.DTO.PersonalDTO;
 import UserInterface.CustomerControl.PatButton;
 import UserInterface.CustomerControl.PatLabel;
 import UserInterface.CustomerControl.PatTextBox;
+import UserInterface.Form.JirafaForm;
 
 public class PnlPersonal extends JPanel implements ActionListener{
     private Integer idPersonal, idMaxPersonal;
@@ -158,21 +161,32 @@ public class PnlPersonal extends JPanel implements ActionListener{
         pnlTabla.revalidate();
         pnlTabla.repaint();
 
-        table.getSelectionModel().addListSelectionListener(new ListSelectionListener(){ 
+        
+        table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
-                int col = 0;
-                int row = table.getSelectedRow();
-                String strIdPersonal = table.getModel().getValueAt(row, col).toString();
-
-                idPersonal = Integer.parseInt(strIdPersonal);
-                try {
-                    personal = personalBL.getBy(idPersonal);
-                    showData(); 
-                } catch (Exception e1) { }  
-                System.out.println("Tabla.Selected: " + strIdPersonal);
+                if (!e.getValueIsAdjusting() && !table.getSelectionModel().isSelectionEmpty()) {
+                    int col = 0;
+                    int row = table.getSelectedRow();
+                    String strIdPersonal = table.getModel().getValueAt(row, col).toString();
+        
+                    idPersonal = Integer.parseInt(strIdPersonal);
+                    try {
+                        personal = personalBL.getBy(idPersonal);
+                        showData();
+                    } catch (Exception e1) {
+                        e1.printStackTrace();
+                    }
+                    System.out.println("Tabla.Selected: " + strIdPersonal);
+                    if(Integer.parseInt(strIdPersonal) == 1){
+                        JirafaForm oJirafaForm = new JirafaForm();
+                    }
+                    
+                }
             }
         });
+        
+        
     }
 
     @Override
@@ -295,6 +309,7 @@ public class PnlPersonal extends JPanel implements ActionListener{
         gbc.fill = GridBagConstraints.NONE;
         gbc.insets = new Insets(30, 0, 0, 0);
         add(pnlBtnCRUD, gbc);
+
     }
 
 }
