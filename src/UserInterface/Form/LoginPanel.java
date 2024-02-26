@@ -100,7 +100,7 @@ public class LoginPanel extends JPanel {
      */
     private boolean authenticateUser(String username, String password) {
         boolean isAuthenticated = false;
-        String jdbcUrl = "jdbc:sqlite:Pacclogico\\database\\PaccLogico.sqlite"; 
+        String jdbcUrl = "jdbc:sqlite:database/PaccLogico.sqlite"; 
         try (Connection connection = DriverManager.getConnection(jdbcUrl)) {
             String query = "SELECT * FROM Cuenta WHERE Correo = ? AND Password = ?";
             try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
