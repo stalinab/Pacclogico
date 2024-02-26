@@ -2,11 +2,31 @@ package DataAccessComponent.DTO;
 
 public class AnimalDTO {
     private int IdAnimal          ;
-    private String Sexo            ;
-    private String Habitat         ;
-    private String Clasificacion   ;
+    private int IdSexo            ;
+    private int IdHabitat         ;
+    private int IdClasificacion   ;
+    private String Sexo           ;
+    private String Habitat        ;
+    private String Clasificacion  ;
     private String Nombre         ;
-    private String Qr            ;
+    private String Qr             ;
+    private String Observacion    ;
+    private String Estado         ;
+    private String FechaCrea      ;
+    private String FechaModifica  ;
+    public AnimalDTO(int idAnimal, int idSexo, int idHabitat, int idClasificacion, String nombre, String qr,
+            String observacion, String estado, String fechaCrea, String fechaModifica) {
+        IdAnimal = idAnimal;
+        IdSexo = idSexo;
+        IdHabitat = idHabitat;
+        IdClasificacion = idClasificacion;
+        Nombre = nombre;
+        Qr = qr;
+        Observacion = observacion;
+        Estado = estado;
+        FechaCrea = fechaCrea;
+        FechaModifica = fechaModifica;
+    }
     public AnimalDTO(int idAnimal, String sexo, String habitat, String clasificacion, String nombre, String qr) {
         IdAnimal = idAnimal;
         Sexo = sexo;
@@ -53,6 +73,48 @@ public class AnimalDTO {
     }
     public void setQr(String qr) {
         Qr = qr;
+    }
+    public String getObservacion() {
+        return Observacion;
+    }
+    public void setObservacion(String observacion) {
+        Observacion = observacion;
+    }
+    public String getEstado() {
+        return Estado;
+    }
+    public void setEstado(String estado) {
+        Estado = estado;
+    }
+    public String getFechaCrea() {
+        return FechaCrea;
+    }
+    public void setFechaCrea(String fechaCrea) {
+        FechaCrea = fechaCrea;
+    }
+    public String getFechaModifica() {
+        return FechaModifica;
+    }
+    public void setFechaModifica(String fechaModifica) {
+        FechaModifica = fechaModifica;
+    }
+    public int getIdSexo() {
+        return IdSexo;
+    }
+    public void setIdSexo(int idSexo) {
+        IdSexo = idSexo;
+    }
+    public int getIdHabitat() {
+        return IdHabitat;
+    }
+    public void setIdHabitat(int idHabitat) {
+        IdHabitat = idHabitat;
+    }
+    public int getIdClasificacion() {
+        return IdClasificacion;
+    }
+    public void setIdClasificacion(int idClasificacion) {
+        IdClasificacion = idClasificacion;
     }
     
 }
