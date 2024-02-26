@@ -34,7 +34,7 @@ public abstract class SplashScreenForm {
         frmSplash.setVisible(true);
         for (int i = 0; i <= 100; i++) {
             try {
-                Thread.sleep(50); 
+                Thread.sleep(15); 
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

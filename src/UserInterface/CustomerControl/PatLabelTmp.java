@@ -34,7 +34,7 @@ public class PatLabelTmp extends JLabel implements MouseListener {
     void setPersonalizacion(){
         addMouseListener(this);
         setOpaque(false);
-        setForeground(Color.blue);
+        setForeground(Color.lightGray);
     }
     
     @Override

@@ -10,6 +10,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import DataAccessComponent.DTO.HabitatDTO;
+import Framework.PatException;
 
 
 public class HabitatDAO extends SQLiteDataHelper implements IDAO<HabitatDTO> {
@@ -128,7 +129,17 @@ public class HabitatDAO extends SQLiteDataHelper implements IDAO<HabitatDTO> {
 
     @Override
     public int getMaxId() throws Exception {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getMaxId'");
+        int maxId = 0;
+        String query = "SELECT MAX(IdHabitat) FROM Habitat WHERE Estado = 'A'";
+        try {
+            Connection conn = openConnection();
+            Statement  stmt = conn.createStatement();
+            ResultSet  rs   = stmt.executeQuery(query);
+            if (rs.next())
+                maxId = rs.getInt(1);
+        } catch (SQLException e) {
+            throw new PatException(e.getMessage(), getClass().getName(), "getMaxId()");
+        }
+        return maxId;
     }
 }
