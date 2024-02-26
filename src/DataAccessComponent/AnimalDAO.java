@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import DataAccessComponent.DTO.AnimalDTO;
+import Framework.PatException;
 public class AnimalDAO extends SQLiteDataHelper {
     public AnimalDTO readBy(Integer id) throws Exception {
         AnimalDTO oS = new AnimalDTO();
@@ -34,7 +35,7 @@ public class AnimalDAO extends SQLiteDataHelper {
             }
         } 
         catch (SQLException e) {
-            throw e;    //new AppException(e, getClass(), "getAllSexo()");
+            throw new PatException(e.getMessage(), getClass().getName(), "readBy");    //new AppException(e, getClass(), "getAllSexo()");
         }
         return oS;
     }
@@ -65,7 +66,7 @@ public class AnimalDAO extends SQLiteDataHelper {
             }
         } 
         catch (SQLException e) {
-            throw e;    //new AppException(e, getClass(), "getAllSexo()");
+            throw new PatException(e.getMessage(), getClass().getName(), "readAll()");    //new AppException(e, getClass(), "getAllSexo()");
         }
         return lst; 
     }
@@ -97,7 +98,7 @@ public class AnimalDAO extends SQLiteDataHelper {
             }
         } 
         catch (SQLException e) {
-            throw e;    //new AppException(e, getClass(), "getAllSexo()");
+            throw new PatException(e.getMessage(), getClass().getName(), "readAllEstructura()");    //new AppException(e, getClass(), "getAllSexo()");
         }
         return lst; 
     }
