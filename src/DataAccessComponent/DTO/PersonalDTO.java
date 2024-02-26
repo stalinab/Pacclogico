@@ -5,7 +5,7 @@
 |-------------------------------------|
 Autor: Kevin Calles
 Fecha: 20 - 02 - 2024
-Script: DTO de Cita
+Script: DTO de Personal
 */
 package DataAccessComponent.DTO;
 

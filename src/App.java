@@ -1,32 +1,26 @@
-import java.util.List;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
-import DataAccessComponent.AnimalDAO;
-import DataAccessComponent.ClasificacionDAO;
-import DataAccessComponent.DTO.AnimalDTO;
+import com.formdev.flatlaf.FlatLightLaf;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatAtomOneDarkIJTheme;
+
+import UserInterface.Form.SplashScreenForm;
+import UserInterface.Form.LoginPanel;
+import UserInterface.Form.MainForm;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        try {
-            // Supongamos que tienes una instancia de la clase donde se encuentra el método readAllEstructura
-            // y que su nombre es AnimalDAO. Reemplaza AnimalDAO con el nombre correcto de tu clase si es diferente.
-            AnimalDAO animalDAO = new AnimalDAO();
-        
-            // Llamamos al método readAllEstructura con el tipo de hábitat "Selva"
-            List<AnimalDTO> listaAnimalesSelva = animalDAO.readAllEstructura("Seva");
-        
-            // Imprimimos los resultados
-            for (AnimalDTO animal : listaAnimalesSelva) {
-                System.out.println("ID: " + animal.getIdAnimal());
-                System.out.println("Sexo: " + animal.getSexo());
-                System.out.println("Habitat: " + animal.getHabitat());
-                System.out.println("Clasificacion: " + animal.getClasificacion());
-                System.out.println("Nombre: " + animal.getNombre());
-                System.out.println("QR: " + animal.getQr());
-                System.out.println("--------------------");
-            }
-        } catch (Exception e) {
-            // Manejo de excepciones
+
+        FlatLightLaf.setup();
+        FlatLightLaf.supportsNativeWindowDecorations();
+        try{
+            SplashScreenForm.show( ) ;
+            LoginPanel loginPanel = new LoginPanel();
+            loginPanel.iniciarSesion();
+            UIManager.setLookAndFeel(new FlatAtomOneDarkIJTheme());
+        } catch (UnsupportedLookAndFeelException e) {
             e.printStackTrace();
         }
+        MainForm  mf = new MainForm("APP");
     }
 }
