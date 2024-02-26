@@ -5,6 +5,7 @@ import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatAtomOneDarkIJTheme;
 
 import UserInterface.Form.SplashScreenForm;
+import UserInterface.Form.LoginPanel;
 import UserInterface.Form.MainForm;
 
 public class App {
@@ -14,6 +15,8 @@ public class App {
         FlatLightLaf.supportsNativeWindowDecorations();
         try{
             SplashScreenForm.show( ) ;
+            LoginPanel loginPanel = new LoginPanel();
+            loginPanel.iniciarSesion();
             UIManager.setLookAndFeel(new FlatAtomOneDarkIJTheme());
         } catch (UnsupportedLookAndFeelException e) {
             e.printStackTrace();
