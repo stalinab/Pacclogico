@@ -8,9 +8,12 @@ import UserInterface.Form.SplashScreenForm;
 import UserInterface.Form.LoginPanel;
 import UserInterface.Form.MainForm;
 
+
 public class App {
     public static void main(String[] args) throws Exception {
 
+        QRgenerator qr = new QRgenerator();
+        //qr.generarQR("https://static.wikia.nocookie.net/reinoanimalia/images/b/b5/Le%C3%B3n_wiki2.png/revision/latest?cb=20130303082204&path-prefix=es", "C:\\Users\\SnowPoom\\Desktop\\qr");
         FlatLightLaf.setup();
         FlatLightLaf.supportsNativeWindowDecorations();
         try{
@@ -21,6 +24,6 @@ public class App {
         } catch (UnsupportedLookAndFeelException e) {
             e.printStackTrace();
         }
-        MainForm  mf = new MainForm("APP");
     }
 }
+
