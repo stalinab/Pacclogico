@@ -50,7 +50,7 @@ public class PatButton  extends JButton implements MouseListener {
         setFocusPainted(false);
         setBorderPainted(false);
         setContentAreaFilled(false);
-        setForeground(Color.darkGray);
+        setForeground(Color.white);
         setHorizontalAlignment(SwingConstants.CENTER);
         setCursor(new Cursor(Cursor.HAND_CURSOR));
         setFont(font);

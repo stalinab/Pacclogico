@@ -38,7 +38,7 @@ public class MainForm extends JFrame implements ActionListener  {
         setJMenuBar(menuBar);
 
         pnlPanel1 = new PnlPersonal();
-        pnlPanel1.setBackground(Color.white);
+        pnlPanel1.setBackground(new Color(56, 61, 72));
 
         cardLayout = new CardLayout();
         setLayout(cardLayout);
