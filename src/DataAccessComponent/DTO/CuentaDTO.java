@@ -1,23 +1,20 @@
 package DataAccessComponent.DTO;
 
 public class CuentaDTO {
-    private int IdCuenta ;
-    private int IdPersonal;
-    private String Nombre       ;
+    private int IdCuenta        ;
+    private int IdPersonal      ;
+    private String Correo       ;
+    private String Password       ;
     private String Observacion  ;
     private String Estado       ;
     private String FechaCrea    ;
     private String FechaModifica;
-    public CuentaDTO(int idCuenta
-                    , int idPersonal
-                    , String nombre
-                    , String observacion
-                    , String estado
-                    , String fechaCrea,
-                      String fechaModifica) {
+    public CuentaDTO(int idCuenta, int idPersonal, String correo, String password, String observacion, String estado,
+            String fechaCrea, String fechaModifica) {
         IdCuenta = idCuenta;
         IdPersonal = idPersonal;
-        Nombre = nombre;
+        Correo = correo;
+        Password = password;
         Observacion = observacion;
         Estado = estado;
         FechaCrea = fechaCrea;
@@ -38,11 +35,17 @@ public class CuentaDTO {
     public void setIdPersonal(int idPersonal) {
         IdPersonal = idPersonal;
     }
-    public String getNombre() {
-        return Nombre;
+    public String getCorreo() {
+        return Correo;
     }
-    public void setNombre(String nombre) {
-        Nombre = nombre;
+    public void setCorreo(String correo) {
+        Correo = correo;
+    }
+    public String getPassword() {
+        return Password;
+    }
+    public void setPassword(String password) {
+        Password = password;
     }
     public String getObservacion() {
         return Observacion;
@@ -68,4 +71,5 @@ public class CuentaDTO {
     public void setFechaModifica(String fechaModifica) {
         FechaModifica = fechaModifica;
     }
+    
 }
