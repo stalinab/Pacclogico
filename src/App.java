@@ -16,7 +16,7 @@ public class App {
         FlatLightLaf.supportsNativeWindowDecorations();
         try{
             SplashScreenForm.show( ) ;
-            LoginPanel loginPanel = new LoginPanel();
+            LoginPanel loginPanel = new LoginPanel(null);
             loginPanel.iniciarSesion();
             UIManager.setLookAndFeel(new FlatAtomOneDarkIJTheme());
         } catch (UnsupportedLookAndFeelException e) {
