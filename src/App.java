@@ -10,7 +10,6 @@ import UserInterface.Form.MainForm;
 
 public class App {
     public static void main(String[] args) throws Exception {
-
         QRgenerator qr = new QRgenerator();
         //qr.generarQR("https://drive.google.com/uc?export=download&id=1w8_hEWWeN2FVCKXLRTdM6RespVCnChIc", "C:\\Users\\kevin\\OneDrive\\Escritorio\\Tortuga.png");
         FlatLightLaf.setup();

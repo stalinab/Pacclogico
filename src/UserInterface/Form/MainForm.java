@@ -11,6 +11,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
 import UserInterface.GUI.PnlAnimal;
+import UserInterface.GUI.PnlCuenta;
 import UserInterface.GUI.PnlPersonal;
 
 public class MainForm extends JFrame implements ActionListener  {
@@ -19,6 +20,7 @@ public class MainForm extends JFrame implements ActionListener  {
 
     PnlPersonal pnlPanel1;
     PnlAnimal pnlPanel2;
+    PnlCuenta pnlPanel3;
 
     CardLayout cardLayout;
  
@@ -32,12 +34,15 @@ public class MainForm extends JFrame implements ActionListener  {
 
         JMenuItem item1 = new JMenuItem("Panel Personal");
         JMenuItem item2 = new JMenuItem("Panel Animal");
+        JMenuItem item3 = new JMenuItem("Panel Cuenta");
 
         item1.addActionListener(this);
         item2.addActionListener(this);
+        item3.addActionListener(this);
 
         menu.add(item1);   
         menu.add(item2);   
+        menu.add(item3);   
 
         menuBar.add(menu);
         setJMenuBar(menuBar);
@@ -46,12 +51,15 @@ public class MainForm extends JFrame implements ActionListener  {
         pnlPanel1.setBackground(new Color(56, 61, 72));
         pnlPanel2 = new PnlAnimal();
         pnlPanel2.setBackground(new Color(56, 61, 72));
+        pnlPanel3 = new PnlCuenta();
+        pnlPanel3.setBackground(new Color(56, 61, 72));
 
         cardLayout = new CardLayout();
         setLayout(cardLayout);
 
         add(pnlPanel1, "Panel Personal");
         add(pnlPanel2, "Panel Animal");
+        add(pnlPanel3, "Panel Cuenta");
 
         isVisible();
         setLocationRelativeTo(null);
@@ -64,6 +72,9 @@ public class MainForm extends JFrame implements ActionListener  {
         }
         if (e.getActionCommand().equals("Panel Animal")) {
             cardLayout.show(getContentPane(), "Panel Animal");
+        }
+        if (e.getActionCommand().equals("Panel Cuenta")) {
+            cardLayout.show(getContentPane(), "Panel Cuenta");
         }
 
     }

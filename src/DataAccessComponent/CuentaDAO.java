@@ -10,6 +10,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import DataAccessComponent.DTO.CuentaDTO;
+import Framework.PatException;
 
 
 public class CuentaDAO extends SQLiteDataHelper implements IDAO<CuentaDTO> {
@@ -20,7 +21,7 @@ public class CuentaDAO extends SQLiteDataHelper implements IDAO<CuentaDTO> {
         try {
             Connection        conn  = openConnection();
             PreparedStatement pstmt = conn.prepareStatement(query);
-            pstmt.setString(1, entity.getNombre());
+            pstmt.setString(1, entity.getCorreo());
             pstmt.executeUpdate();
             return true;
         } 
@@ -33,7 +34,6 @@ public class CuentaDAO extends SQLiteDataHelper implements IDAO<CuentaDTO> {
     public List<CuentaDTO> readAll() throws Exception {
         List<CuentaDTO> lst = new ArrayList<>() ;//VACIA
         String query = "SELECT  IdCuenta"
-                  +"IdCuenta      " 
                   +",IdPersonal   " 
                   +",Correo       " 
                   +",Password     " 
@@ -56,7 +56,8 @@ public class CuentaDAO extends SQLiteDataHelper implements IDAO<CuentaDTO> {
                                                         rs.getString(4), 
                                                         rs.getString(5),
                                                         rs.getString(6),
-                                                        rs.getString(7));
+                                                        rs.getString(7),
+                                                        rs.getString(8));
              lst.add(oDTOCuenta);//cada vez que traemos una fila agregamos a una lista.
          }
      }catch(SQLException e){
@@ -69,7 +70,6 @@ public class CuentaDAO extends SQLiteDataHelper implements IDAO<CuentaDTO> {
     public CuentaDTO read(Integer id) throws Exception {
         CuentaDTO oDTOCuenta = new CuentaDTO();
         String query ="SELECT  IdCuenta"
-                    +"IdCuenta      " 
                     +",IdPersonal   " 
                     +",Correo       " 
                     +",Password     " 
@@ -78,7 +78,6 @@ public class CuentaDAO extends SQLiteDataHelper implements IDAO<CuentaDTO> {
                     +",FechaCrea    " 
                     +",FechaModifica "
                     +"FROM     Cuenta "  
-                    +"FROM    Cuenta       "   
                     +"WHERE   Estado ='A' AND IdCuenta =   "+ id.toString() ;
         try {
             Connection conn = openConnection();         // conectar a DB     
@@ -86,12 +85,13 @@ public class CuentaDAO extends SQLiteDataHelper implements IDAO<CuentaDTO> {
             ResultSet rs   = stmt.executeQuery(query);  // ejecutar la
             while (rs.next()) {
                 CuentaDTO oDTOCuenta1 = new CuentaDTO (rs.getInt(1), 
-                                                       rs.getInt(2), 
-                                                       rs.getString(3), 
-                                                       rs.getString(4), 
-                                                       rs.getString(5),
-                                                       rs.getString(6),
-                                                       rs.getString(7));
+                rs.getInt(2), 
+                rs.getString(3), 
+                rs.getString(4), 
+                rs.getString(5),
+                rs.getString(6),
+                rs.getString(7),
+                rs.getString(8));
                 oDTOCuenta=oDTOCuenta1;    }
         } 
         catch (SQLException e) {
@@ -108,7 +108,7 @@ public class CuentaDAO extends SQLiteDataHelper implements IDAO<CuentaDTO> {
         try {
             Connection          conn = openConnection();
             PreparedStatement pstmt  = conn.prepareStatement(query);
-            pstmt.setString(1, entity.getNombre());
+            pstmt.setString(1, entity.getCorreo());
             pstmt.setString(2, dtf.format(now).toString());
             pstmt.setInt(3, entity.getIdCuenta());
             pstmt.executeUpdate();
@@ -137,7 +137,17 @@ public class CuentaDAO extends SQLiteDataHelper implements IDAO<CuentaDTO> {
 
     @Override
     public int getMaxId() throws Exception{
-        int maxId =0;
+        int maxId = 0;
+        String query = "SELECT MAX(IdCuenta) FROM Cuenta WHERE Estado = 'A'";
+        try {
+            Connection conn = openConnection();
+            Statement  stmt = conn.createStatement();
+            ResultSet  rs   = stmt.executeQuery(query);
+            if (rs.next())
+                maxId = rs.getInt(1);
+        } catch (SQLException e) {
+            throw new PatException(e.getMessage(), getClass().getName(), "getMaxId()");
+        }
         return maxId;
     }
 

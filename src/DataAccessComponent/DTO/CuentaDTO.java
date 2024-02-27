@@ -3,28 +3,29 @@ package DataAccessComponent.DTO;
 public class CuentaDTO {
     private int IdCuenta ;
     private int IdPersonal;
-    private String Nombre       ;
+    private String Correo       ;
+    private String Password     ;
     private String Observacion  ;
     private String Estado       ;
     private String FechaCrea    ;
     private String FechaModifica;
+    public CuentaDTO() {}
     public CuentaDTO(int idCuenta
                     , int idPersonal
-                    , String nombre
+                    , String correo
+                    , String password
                     , String observacion
                     , String estado
                     , String fechaCrea,
                       String fechaModifica) {
-        IdCuenta = idCuenta;
-        IdPersonal = idPersonal;
-        Nombre = nombre;
-        Observacion = observacion;
-        Estado = estado;
-        FechaCrea = fechaCrea;
-        FechaModifica = fechaModifica;
-    }
-    public CuentaDTO() {
-        //TODO Auto-generated constructor stub
+        this.IdCuenta = idCuenta;
+        this.IdPersonal = idPersonal;
+        this.Correo = correo;
+        this.Password = password;
+        this.Observacion = observacion;
+        this.Estado = estado;
+        this.FechaCrea = fechaCrea;
+        this.FechaModifica = fechaModifica;
     }
     public int getIdCuenta() {
         return IdCuenta;
@@ -38,11 +39,17 @@ public class CuentaDTO {
     public void setIdPersonal(int idPersonal) {
         IdPersonal = idPersonal;
     }
-    public String getNombre() {
-        return Nombre;
+    public String getCorreo() {
+        return Correo;
     }
-    public void setNombre(String nombre) {
-        Nombre = nombre;
+    public void setCorreo(String correo) {
+        Correo = correo;
+    }
+    public String getPassword() {
+        return Password;
+    }
+    public void setPassword(String password) {
+        Password = password;
     }
     public String getObservacion() {
         return Observacion;

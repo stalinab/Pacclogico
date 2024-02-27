@@ -91,7 +91,8 @@ public class LoginPanel extends JPanel {
     private void transicionDespuesDeLogin() throws Exception{
         SwingUtilities.getWindowAncestor(this).dispose();
         MainForm mf = new MainForm("APP");
-    }
+
+    } 
     /**
      * @param username
      * @param password
