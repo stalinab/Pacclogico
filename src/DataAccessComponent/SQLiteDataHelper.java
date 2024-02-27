@@ -8,10 +8,10 @@ import java.sql.SQLException;
 |--------------------------------------|
 | (©)2k24 EPN-FIS, All right reserved. |       
 |                                      |
-|isabellahq29@gmail.com       lalabell |
+|erick.caicedo@epn.edu.ec ErickCaiced2 |
 |______________________________________|
-Autor: lalabell
-Fecha: 16/02/1014
+Autor: ErickCaiced2
+Fecha: 24/02/1014
 src: Creación del SQLiteJavaHelper
 */
 
