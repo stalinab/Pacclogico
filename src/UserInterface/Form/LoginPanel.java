@@ -81,6 +81,8 @@ public class LoginPanel extends JPanel {
                     }
                 } else {
                     JOptionPane.showMessageDialog(LoginPanel.this, "Autenticación fallida", "Error", JOptionPane.ERROR_MESSAGE);
+                    usernameField.setText("");
+                    passwordField.setText("");
                 }
             }
         });
