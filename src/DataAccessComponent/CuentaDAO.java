@@ -17,7 +17,7 @@ public class CuentaDAO extends SQLiteDataHelper implements IDAO<CuentaDTO> {
 
     @Override
     public boolean create(CuentaDTO entity) throws Exception {
-        String query = " INSERT INTO Cuenta (Nombre) VALUES (?)";
+        String query = " INSERT INTO Cuenta (IdPersonal, Correo, Password) VALUES (?,?,?)";
         try {
             Connection        conn  = openConnection();
             PreparedStatement pstmt = conn.prepareStatement(query);
@@ -104,7 +104,7 @@ public class CuentaDAO extends SQLiteDataHelper implements IDAO<CuentaDTO> {
     public boolean update(CuentaDTO entity) throws Exception {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");  
         LocalDateTime now = LocalDateTime.now();
-        String query = " UPDATE Cuenta SET Nombre = ?, FechaModifica = ? WHERE IdCuenta = ?";
+        String query = " UPDATE Cuenta SET Password = ?, FechaModifica = ? WHERE IdCuenta = ?";
         try {
             Connection          conn = openConnection();
             PreparedStatement pstmt  = conn.prepareStatement(query);

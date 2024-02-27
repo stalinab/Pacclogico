@@ -75,4 +75,5 @@ public class CuentaDTO {
     public void setFechaModifica(String fechaModifica) {
         FechaModifica = fechaModifica;
     }
+    
 }
