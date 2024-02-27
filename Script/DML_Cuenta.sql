@@ -64,3 +64,4 @@ insert into Cuenta (IdPersonal, Correo, Password) values (3, 'cpiell10@simplemac
 insert into Cuenta (IdPersonal, Correo, Password) values (3, 'jhatherley11@google.it', 'cS4/G)YjMl');
 insert into Cuenta (IdPersonal, Correo, Password) values (3, 'gargrave12@g.co', 'fZ9(0)#tIkkG');
 insert into Cuenta (IdPersonal, Correo, Password) values (3, 'dobbard13@hostgator.com', 'dM1`qN`,&U');
+UPDATE Cuenta  SET Estado = 'A' WHERE IdCuenta = 52; 

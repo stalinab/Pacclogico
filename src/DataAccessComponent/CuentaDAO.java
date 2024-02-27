@@ -21,7 +21,9 @@ public class CuentaDAO extends SQLiteDataHelper implements IDAO<CuentaDTO> {
         try {
             Connection        conn  = openConnection();
             PreparedStatement pstmt = conn.prepareStatement(query);
-            pstmt.setString(1, entity.getCorreo());
+            pstmt.setInt(1, entity.getIdPersonal());
+            pstmt.setString(2, entity.getCorreo());
+            pstmt.setString(3, entity.getPassword());
             pstmt.executeUpdate();
             return true;
         } 

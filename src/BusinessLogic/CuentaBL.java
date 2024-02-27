@@ -16,16 +16,15 @@ public class CuentaBL {
     }
 
     public CuentaDTO getBy(int IdCuenta) throws Exception{
-        c = cuentaDao.read(IdCuenta);
-        return c;
+        return cuentaDao.read(IdCuenta);
     }
 
     public boolean add(CuentaDTO cuentaDTO) throws Exception{
-        return cuentaDao.create(c);
+        return cuentaDao.create(cuentaDTO);
     }
 
     public boolean update(CuentaDTO cuentaDTO) throws Exception{
-        return cuentaDao.update(c);
+        return cuentaDao.update(cuentaDTO);
     }
 
     public boolean delete(int IdCuenta) throws Exception{
