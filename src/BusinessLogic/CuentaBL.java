@@ -20,18 +20,18 @@ public class CuentaBL {
         return c;
     }
 
-    public boolean add(int IdPersonal, String Nombre) throws Exception{
+    public boolean add(int IdPersonal, String Correo) throws Exception{
         c = new CuentaDTO();
         c.setIdPersonal(IdPersonal);
-        c.setNombre(Nombre);
+        c.setCorreo(Correo);
         return cuentaDao.create(c);
     }
 
-    public boolean update(int IdCuenta, int IdPersonal, String Nombre) throws Exception{
+    public boolean update(int IdCuenta, int IdPersonal, String Correo) throws Exception{
         c = new CuentaDTO();
         c.setIdCuenta(IdCuenta);
         c.setIdPersonal(IdPersonal);
-        c.setNombre(Nombre);
+        c.setCorreo(Correo);
         return cuentaDao.update(c);
     }
 
