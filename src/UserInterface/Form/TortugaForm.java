@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 public class TortugaForm extends JFrame{
     public TortugaForm(){
         JLabel label = new JLabel();
-        String imagePath = "../Pacclogico/src/UserInterface/Resource/Img/Tortuga.jpeg"; 
+        String imagePath = "../Pacclogico/src/UserInterface/Resource/Img/Tortuga.png"; 
         // Lee la imagen desde el archivo y la convierte en un ImageIcon
         ImageIcon icon = new ImageIcon(imagePath);
         // Obtiene la imagen del ImageIcon

@@ -12,7 +12,7 @@ public class App {
     public static void main(String[] args) throws Exception {
 
         QRgenerator qr = new QRgenerator();
-        //qr.generarQR("https://drive.google.com/uc?export=download&id=1x1hg2c0HOVQuXX2JyNyzWIJDGj0jxQrR", "C:\\Users\\Corina\\OneDrive\\Escritorio\\Tortuga.png");
+        //qr.generarQR("https://drive.google.com/uc?export=download&id=1w8_hEWWeN2FVCKXLRTdM6RespVCnChIc", "C:\\Users\\kevin\\OneDrive\\Escritorio\\Tortuga.png");
         FlatLightLaf.setup();
         FlatLightLaf.supportsNativeWindowDecorations();
         try{
