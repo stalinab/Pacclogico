@@ -32,7 +32,16 @@ import DataAccessComponent.DTO.AnimalDTO;
 import DataAccessComponent.DTO.HabitatDTO;
 import UserInterface.CustomerControl.PatButton;
 import UserInterface.CustomerControl.PatLabel;
-import UserInterface.Form.JirafaForm;
+import UserInterface.Form.CapibaraForm;
+import UserInterface.Form.CondorForm;
+import UserInterface.Form.GorilaForm;
+import UserInterface.Form.HipopotamoForm;
+import UserInterface.Form.LeonForm;
+import UserInterface.Form.PatoAmericanoForm;
+import UserInterface.Form.SapoForm;
+import UserInterface.Form.SerpienteForm;
+import UserInterface.Form.TigreForm;
+import UserInterface.Form.TortugaForm;
 
 public class PnlAnimal extends JPanel implements ActionListener{
     private Integer idAnimal, idMaxAnimal;
@@ -108,9 +117,35 @@ public class PnlAnimal extends JPanel implements ActionListener{
                     }
                     System.out.println("Tabla.Selected: " + strIdAnimal);
                     if(Integer.parseInt(strIdAnimal) == 1){
-                        JirafaForm oJirafaForm = new JirafaForm();
+                        LeonForm oLeonForm = new LeonForm();
                     }
-                    
+                    if(Integer.parseInt(strIdAnimal) == 2){
+                        SapoForm oSapoForm = new SapoForm();
+                    }
+                    if(Integer.parseInt(strIdAnimal) == 3){
+                        TigreForm oTigreForm = new TigreForm();
+                    }
+                    if(Integer.parseInt(strIdAnimal) == 4){
+                        GorilaForm oGorilaForm = new GorilaForm();
+                    }
+                    if(Integer.parseInt(strIdAnimal) == 5){
+                        HipopotamoForm oHipopotamoForm = new HipopotamoForm();
+                    }
+                    if(Integer.parseInt(strIdAnimal) == 6){
+                        SerpienteForm oSerpienteForm = new SerpienteForm();
+                    }
+                    if(Integer.parseInt(strIdAnimal) == 7){
+                        CondorForm oCondorForm = new CondorForm();
+                    }
+                    if(Integer.parseInt(strIdAnimal) == 8){
+                        PatoAmericanoForm oPatoAmericanoForm = new PatoAmericanoForm();
+                    }
+                    if(Integer.parseInt(strIdAnimal) == 9){
+                        CapibaraForm oCapibaraForm = new CapibaraForm();
+                    }
+                    if(Integer.parseInt(strIdAnimal) == 10){
+                        TortugaForm oTortugaForm = new TortugaForm();
+                    }
                 }
             }
         });

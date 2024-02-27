@@ -6,10 +6,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class JirafaForm extends JFrame{
-    public JirafaForm(){
+public class SerpienteForm extends JFrame{
+    public SerpienteForm(){
         JLabel label = new JLabel();
-        String imagePath = "../Pacclogico/src/UserInterface/Resource/Img/Jirafa.jpg"; 
+        String imagePath = "../Pacclogico/src/UserInterface/Resource/Img/Serpiente.jpeg"; 
         // Lee la imagen desde el archivo y la convierte en un ImageIcon
         ImageIcon icon = new ImageIcon(imagePath);
         // Obtiene la imagen del ImageIcon
@@ -29,3 +29,4 @@ public class JirafaForm extends JFrame{
         
     }
 }
+

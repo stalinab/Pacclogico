@@ -33,7 +33,7 @@ import DataAccessComponent.DTO.PersonalDTO;
 import UserInterface.CustomerControl.PatButton;
 import UserInterface.CustomerControl.PatLabel;
 import UserInterface.CustomerControl.PatTextBox;
-import UserInterface.Form.JirafaForm;
+import UserInterface.Form.SapoForm;
 
 public class PnlPersonal extends JPanel implements ActionListener{
     private Integer idPersonal, idMaxPersonal;
@@ -179,7 +179,7 @@ public class PnlPersonal extends JPanel implements ActionListener{
                     }
                     System.out.println("Tabla.Selected: " + strIdPersonal);
                     if(Integer.parseInt(strIdPersonal) == 1){
-                        JirafaForm oJirafaForm = new JirafaForm();
+                        SapoForm oJirafaForm = new SapoForm();
                     }
                     
                 }

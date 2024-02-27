@@ -13,6 +13,7 @@ INSERT INTO Cuenta
     (IdPersonal, Correo, Password)
 VALUES 
     (1, "admin.developer@gmail.com", "admin22")
+    ,(1, "Kevinwasd", "123")
     ,(2, "pepe.anchundia@gmail.com", "pepe20") 
     ,(2, "jose.maldonado@gmail.com", "jose10")
     ,(3, "sebastian.caicedo@gmail.com", "sebs100")
