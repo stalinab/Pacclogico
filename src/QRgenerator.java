@@ -26,7 +26,7 @@ public class QRgenerator {
             QRCodeWriter qrCodeWriter = new QRCodeWriter();
             BitMatrix bitMatrix = qrCodeWriter.encode(URL, BarcodeFormat.QR_CODE, anchura, altura, p);
             File qrCodeFile = new File(Path);
-            MatrixToImageWriter.writeToPath(bitMatrix, "PNG", qrCodeFile.toPath());
+            MatrixToImageWriter.writeToPath(bitMatrix, "png", qrCodeFile.toPath());
 
             System.out.println("Código QR generado con éxito en: " + Path);
         } catch (WriterException | IOException e) {
