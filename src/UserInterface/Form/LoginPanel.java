@@ -24,6 +24,7 @@ public class LoginPanel extends JPanel {
     private JPasswordField  passwordField;
     private JButton         loginButton;
     private CuentaBL        cuentaBL;
+    private CuentaDTO       cuentaDTO;
 
     public LoginPanel(CuentaBL cuentaBL) {
         this.cuentaBL = new CuentaBL();
@@ -103,7 +104,7 @@ public class LoginPanel extends JPanel {
      */
     private void transicionDespuesDeLogin() throws Exception{
         SwingUtilities.getWindowAncestor(this).dispose();
-        MainForm mf = new MainForm("APP");
+        MainForm mf = new MainForm("APP", cuentaDTO);
 
     } 
     /**
@@ -119,6 +120,8 @@ public class LoginPanel extends JPanel {
             for (CuentaDTO cuenta : cuentas) {
                 if (cuenta.getCorreo().equals(username) && cuenta.getPassword().equals(password)) {
                     isAuthenticated = true;
+                    cuentaDTO = new CuentaDTO();
+                    cuentaDTO.setIdPersonal(cuenta.getIdPersonal());
                     break;
                 }
             }
