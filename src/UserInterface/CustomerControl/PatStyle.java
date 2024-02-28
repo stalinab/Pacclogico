@@ -18,7 +18,7 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 
 public abstract class PatStyle {
-    public static final Color COLOR_FONT = Color.white;
+    public static final Color COLOR_FONT = Color.black;
     public static final Color COLOR_FONT_LIGHT = new Color(255, 255, 255);
     public static final Color COLOR_CURSOR = Color.white;
     public static final Color COLOR_BORDER = new Color(216, 210, 207);

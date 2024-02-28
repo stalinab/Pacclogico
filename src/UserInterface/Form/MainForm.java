@@ -9,6 +9,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 import UserInterface.GUI.PnlAnimal;
 import UserInterface.GUI.PnlCuenta;
@@ -21,6 +22,7 @@ public class MainForm extends JFrame implements ActionListener  {
     PnlPersonal pnlPanel1;
     PnlAnimal pnlPanel2;
     PnlCuenta pnlPanel3;
+    LoginPanel pLoginPanel;
 
     CardLayout cardLayout;
  
@@ -35,14 +37,17 @@ public class MainForm extends JFrame implements ActionListener  {
         JMenuItem item1 = new JMenuItem("Panel Personal");
         JMenuItem item2 = new JMenuItem("Panel Animal");
         JMenuItem item3 = new JMenuItem("Panel Cuenta");
+        JMenuItem item4 = new JMenuItem("Cerrar Sesion");
 
         item1.addActionListener(this);
         item2.addActionListener(this);
         item3.addActionListener(this);
+        item4.addActionListener(this);
 
         menu.add(item1);   
         menu.add(item2);   
-        menu.add(item3);   
+        menu.add(item3); 
+        menu.add(item4);
 
         menuBar.add(menu);
         setJMenuBar(menuBar);
@@ -53,7 +58,7 @@ public class MainForm extends JFrame implements ActionListener  {
         pnlPanel2.setBackground(new Color(56, 61, 72));
         pnlPanel3 = new PnlCuenta();
         pnlPanel3.setBackground(new Color(56, 61, 72));
-
+        
         cardLayout = new CardLayout();
         setLayout(cardLayout);
 
@@ -75,6 +80,11 @@ public class MainForm extends JFrame implements ActionListener  {
         }
         if (e.getActionCommand().equals("Panel Cuenta")) {
             cardLayout.show(getContentPane(), "Panel Cuenta");
+        }
+        if (e.getActionCommand().equals("Cerrar Sesion")) {
+            dispose();
+            pLoginPanel = new LoginPanel(null);
+            pLoginPanel.iniciarSesion();
         }
 
     }
