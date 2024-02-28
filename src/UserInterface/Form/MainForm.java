@@ -31,6 +31,12 @@ public class MainForm extends JFrame implements ActionListener  {
 
     CardLayout cardLayout;
  
+    /**
+     * Este constructor `MainForm` es responsable de configurar el marco principal de la aplicación con una barra de menú y paneles para diferentes funcionalidades. 
+     * @param titleApp
+     * @param cuentaDTO
+     * @throws Exception
+     */
     public MainForm(String titleApp, CuentaDTO cuentaDTO) throws Exception {
         this.cuentaDTO = cuentaDTO;
         setTitle("Interfaz con Menú y Paneles");
@@ -77,6 +83,10 @@ public class MainForm extends JFrame implements ActionListener  {
         setVisible(true);
     }
 
+   /**
+    * Este método `actionPerformed` es una implementación de la interfaz `ActionListener` en Java Swing.
+    * Se utiliza para manejar acciones realizadas por el usuario en los elementos del menú en la clase `MainForm`.
+    */
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Panel Personal")) {
             if(cuentaDTO.getIdPersonal()!=3){

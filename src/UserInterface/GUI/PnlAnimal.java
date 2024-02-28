@@ -48,6 +48,11 @@ public class PnlAnimal extends JPanel implements ActionListener{
     private AnimalBL  animalBL = null;
     private AnimalDTO animal   = null;
 
+    /**
+     * El constructor `public PnlAnimal() throws Exception` en la clase `PnlAnimal` es responsable de inicializar una nueva instancia del panel `PnlAnimal`. 
+     * Aquí hay un desglose de lo que hace:
+     * @throws Exception
+     */
     public PnlAnimal() throws Exception{
         customerSizeControl();
         loadData();
@@ -55,6 +60,12 @@ public class PnlAnimal extends JPanel implements ActionListener{
         showTable();
     }
     
+    
+    /**
+     * El método `loadData` inicializa variables relacionadas con un objeto animal recuperando datos de
+     * una base de datos usando una clase de lógica de negocios `AnimalBL`.
+     * @throws Exception
+     */
     private void loadData() throws Exception {
         idAnimal      = 1;
         animalBL      = new AnimalBL();
@@ -62,16 +73,40 @@ public class PnlAnimal extends JPanel implements ActionListener{
         idMaxAnimal   = animalBL.getMaxId();
     }
 
+    /**
+     * La función `showData` calcula la página actual y el total de páginas en función de las
+     * identificaciones de los animales y actualiza una etiqueta con esta información.
+     */
     private void showData() {
         int currentPage = (idAnimal - 1) / 10 + 1,
             totalPages  = (idMaxAnimal - 1) / 10 + 1;
         lblTotalReg.setText("Página " + currentPage + " de " + totalPages);
     }
 
+
+    /**
+     * La función muestra la tabla
+     * @throws Exception
+     */
     private void showTable() throws Exception {
         String[] header = {"Id", "Sexo", "Habitat", "Clasificacion", "Nombre"};
         Object[][] data = new Object[animalBL.getAll().size()][6];  
         int index = 0;
+     
+        /**
+         * Este bucle `for` itera sobre una lista de objetos `AnimalDTO` obtenidos de
+         * `animalBL.getAll()`. Para cada objeto `AnimalDTO` `pr` en la lista, realiza las siguientes
+         * acciones:
+         * 1. Crea instancias de `ClasificacionBL` y `HabitatBL`.
+         * 2. Recupera información específica del objeto `pr` como `idAnimal`, `sexo`, `habitat`,
+         * `clasificacion` y `nombre`.
+         * 3. Convierte el valor `sexo` en una representación de cadena "Macho" si es igual a 1, en
+         * caso contrario "Hembra".
+         * 4. Recupera el nombre del hábitat y la clasificación usando las instancias `HabitatBL` y
+         * `ClasificacionBL` respectivamente.
+         * 5. Rellena la matriz "datos" con la información extraída en el índice correspondiente.
+         * 6. Incrementa la variable `index` para pasar a la siguiente fila en la matriz `data`.
+         */
         for(AnimalDTO pr : animalBL.getAll()) {
             ClasificacionBL cBl = new ClasificacionBL();
             HabitatBL hBl = new HabitatBL();
@@ -99,7 +134,9 @@ public class PnlAnimal extends JPanel implements ActionListener{
         pnlTabla.revalidate();
         pnlTabla.repaint();
 
-        
+        /**
+         * Este metodo  se encarga de mostrar los detalles de la seleccion de filas
+         */
         table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
@@ -153,6 +190,14 @@ public class PnlAnimal extends JPanel implements ActionListener{
         
     }
 
+    /**
+     * Esta función maneja las acciones de los botones para actualizar la variable idAnimal en función
+     * de los clics en los botones.
+     * 
+     * @param e El parámetro `e` en el método `actionPerformed` es un objeto `ActionEvent`. Este objeto
+     * representa la acción que ocurrió, como hacer clic en un botón o seleccionar un menú, y
+     * proporciona información sobre el evento, como el origen del evento.
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == btnIni)
@@ -189,6 +234,10 @@ public class PnlAnimal extends JPanel implements ActionListener{
  * Customize : Form
  ************************/ 
 
+    /**
+     * La función `customerSizeControl` configura un diseño con componentes para mostrar datos y
+     * controles de paginación en una GUI de Java.
+     */
     public void customerSizeControl() {
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();

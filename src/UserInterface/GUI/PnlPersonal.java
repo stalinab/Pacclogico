@@ -46,6 +46,16 @@ public class PnlPersonal extends JPanel implements ActionListener{
         showData();
         showTable();
         
+        
+        /**
+         * El fragmento de código `btnGuardar.addActionListener(new ActionListener() {... });` agrega
+         * un ActionListener al botón `btnGuardar`. Cuando se hace clic en el botón `btnGuardar`, se
+         * ejecutará el método `actionPerformed` dentro de ActionListener. En este caso, llama al
+         * método `btnGuardarClick(e)`, que maneja la lógica para guardar o actualizar datos
+         * relacionados con la entidad "Personal" en el panel GUI. Si ocurre una excepción durante la
+         * ejecución de `btnGuardarClick(e)`, se detectará y los detalles de la excepción se imprimirán
+         * en la consola usando `e1.printStackTrace()`.
+         */
         btnGuardar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) 
             {   try {
@@ -55,6 +65,13 @@ public class PnlPersonal extends JPanel implements ActionListener{
             }    }
         });
 
+        
+        /**
+         * El código anterior agrega un ActionListener a un botón llamado `btnEliminar`. Cuando se hace
+         * clic en el botón, se llama al método `actionPerformed`. Dentro de este método, intenta
+         * llamar al método `btnEliminarClick` y detecta cualquier excepción que pueda ocurrir,
+         * imprimiendo el seguimiento de la pila si se detecta una excepción.
+         */
         btnEliminar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) 
             {   try {
@@ -66,6 +83,10 @@ public class PnlPersonal extends JPanel implements ActionListener{
         });
     }
     
+    /**
+     * El método `loadData` inicializa variables relacionadas con datos personales recuperando
+     * información de un objeto `PersonalBL`.
+     */
     private void loadData() throws Exception {
         idPersonal      = 1;
         personalBL      = new PersonalBL();
@@ -73,12 +94,25 @@ public class PnlPersonal extends JPanel implements ActionListener{
         idMaxPersonal   = personalBL.getMaxId();
     }
 
+    /**
+     * La función `showData` calcula la página actual y el total de páginas en función de las
+     * identificaciones personales y actualiza una etiqueta con esta información.
+     */
     private void showData() {
         int currentPage = (idPersonal - 1) / 10 + 1,
             totalPages  = (idMaxPersonal - 1) / 10 + 1;
         lblTotalReg.setText("Página " + currentPage + " de " + totalPages);
     }
    
+    /**
+     * Esta función de Java muestra un cuadro de diálogo de confirmación para eliminar un registro y
+     * luego lo elimina si se confirma.
+     * 
+     * @param e El parámetro `e` en el método `btnEliminarClick` de tipo `ActionEvent` representa el
+     * evento de acción que ocurrió, como un clic en un botón. Proporciona información sobre el evento,
+     * como la fuente del evento y cualquier detalle adicional relacionado con el evento. En este caso,
+     * el
+     */
     private void btnEliminarClick(ActionEvent e) throws Exception {
         if (JOptionPane.showConfirmDialog(this, "¿Está seguro que desea Eliminar?", "Eliminar...",
         JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
@@ -93,6 +127,15 @@ public class PnlPersonal extends JPanel implements ActionListener{
         }
     }
    
+    /**
+     * Esta función de Java maneja el evento de hacer clic en un botón "Guardar", solicitando al
+     * usuario que confirme guardar los datos y luego agregar o actualizar un registro según la entrada
+     * del usuario.
+     * 
+     * @param e El parámetro `e` en el método `btnGuardarClick` representa el `ActionEvent` que se
+     * activa cuando se hace clic en el botón. Este evento contiene información sobre la acción que
+     * ocurrió, como el origen del evento (en este caso, el botón en el que se hizo clic).
+     */
     private void btnGuardarClick(ActionEvent e) throws HeadlessException, Exception {
         boolean personalNull = (personal == null);
         if (JOptionPane.showConfirmDialog(this, "¿Seguro que desea guardar?", (personalNull)?"Agregar...": "Actualizar...", 
@@ -131,10 +174,28 @@ public class PnlPersonal extends JPanel implements ActionListener{
         }
     }
 
+    /**
+     * La función muestra la tabla
+     * @throws Exception
+     */
     private void showTable() throws Exception {
         String[] header = {"Id", "Padre", "Nombre", "Estado"};
         Object[][] data = new Object[personalBL.getAll().size()][4];  
         int index = 0;
+        /**
+         * Este bucle `for` itera sobre una lista de objetos `AnimalDTO` obtenidos de
+         * `animalBL.getAll()`. Para cada objeto `AnimalDTO` `pr` en la lista, realiza las siguientes
+         * acciones:
+         * 1. Crea instancias de `ClasificacionBL` y `HabitatBL`.
+         * 2. Recupera información específica del objeto `pr` como `idAnimal`, `sexo`, `habitat`,
+         * `clasificacion` y `nombre`.
+         * 3. Convierte el valor `sexo` en una representación de cadena "Macho" si es igual a 1, en
+         * caso contrario "Hembra".
+         * 4. Recupera el nombre del hábitat y la clasificación usando las instancias `HabitatBL` y
+         * `ClasificacionBL` respectivamente.
+         * 5. Rellena la matriz "datos" con la información extraída en el índice correspondiente.
+         * 6. Incrementa la variable `index` para pasar a la siguiente fila en la matriz `data`.
+         */
         for(PersonalDTO pr : personalBL.getAll()) {
             data[index][0] = pr.getIdPersonal();
             data[index][1] = (pr.getIdPersonal_Padre() != 0) 
@@ -161,7 +222,9 @@ public class PnlPersonal extends JPanel implements ActionListener{
         pnlTabla.revalidate();
         pnlTabla.repaint();
 
-        
+        /**
+         * Este metodo  se encarga de mostrar los detalles de la seleccion de filas
+         */
         table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
@@ -189,6 +252,15 @@ public class PnlPersonal extends JPanel implements ActionListener{
         
     }
 
+   /**
+    * El método actionPerformed actualiza la variable idPersonal según el botón que desencadenó el
+    * evento de acción.
+    * 
+    * @param e El parámetro `e` en el método `actionPerformed` de un `ActionListener` representa el
+    * `ActionEvent` que ocurrió. Proporciona información sobre el evento que desencadenó la acción,
+    * como el origen del evento (por ejemplo, un botón), cualquier modificador (por ejemplo, la tecla
+    * Ctrl
+    */
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == btnIni)
@@ -234,6 +306,10 @@ public class PnlPersonal extends JPanel implements ActionListener{
  * Customize : Form
  ************************/ 
 
+    /**
+     * La función `customerSizeControl` configura un diseño con varios componentes, como botones,
+     * etiquetas y campos de texto, organizados mediante GridBagLayout en una GUI de Java.
+     */
     public void customerSizeControl() {
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();

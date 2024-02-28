@@ -41,12 +41,25 @@ public class PnlCuenta extends JPanel implements ActionListener{
     private CuentaBL  cuentaBL = null;
     private CuentaDTO cuenta   = null;
 
+    /**
+     * El constructor `public PnlCuenta() throws Exception` en la clase `PnlCuenta` es responsable de inicializar una nueva instancia del panel `PnlCuenta`. 
+     * Aquí hay un desglose de lo que hace:
+     * @throws Exception
+     */
     public PnlCuenta() throws Exception{
         customerSizeControl();
         loadData();
         showData();
         showTable();
         
+        
+        /**
+         * El código anterior agrega un ActionListener a un botón llamado btnGuardar. Cuando se hace
+         * clic en el botón, se llama al método actionPerformed. Dentro de este método se llama al
+         * método btnGuardarClick, que es responsable de manejar el evento de clic del botón. Si se
+         * produce una excepción durante la ejecución del método btnGuardarClick, se detectará y su
+         * seguimiento de pila se imprimirá en la consola.
+         */
         btnGuardar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) 
             {   try {
@@ -56,6 +69,13 @@ public class PnlCuenta extends JPanel implements ActionListener{
             }    }
         });
 
+        /**
+         * El código anterior agrega un ActionListener a un botón llamado btnEliminar. Cuando se hace
+         * clic en el botón, se llama al método actionPerformed. Dentro de este método se llama al
+         * método btnEliminarClick, que es responsable de manejar el evento de clic del botón. Si se
+         * produce una excepción durante la ejecución de btnEliminarClick, se detectará y se imprimirá
+         * su seguimiento de pila.
+         */
         btnEliminar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) 
             {   try {
@@ -71,6 +91,11 @@ public class PnlCuenta extends JPanel implements ActionListener{
         btnFin.addActionListener(this);
     }
     
+    /**
+     * El método `loadData` inicializa variables relacionadas con un objeto cuenta recuperando datos de
+     * una base de datos usando una clase de lógica de negocios `CuentaBL`.
+     * @throws Exception
+     */
     private void loadData() throws Exception {
         idCuenta      = 1;
         cuentaBL      = new CuentaBL();
@@ -78,11 +103,24 @@ public class PnlCuenta extends JPanel implements ActionListener{
         idMaxCuenta   = cuentaBL.getMaxId();
     }
 
+    /**
+     * La función `showData` calcula el número total de páginas y actualiza una etiqueta con el número
+     * de página actual y el total de páginas.
+     */
     private void showData() {
         totalPag  = (idMaxCuenta - 1) / 10 + 1;
         lblTotalReg.setText("Página " + nroPag + " de " + totalPag);
     }
    
+    /**
+     * Esta función muestra un cuadro de diálogo de confirmación para eliminar un registro y luego lo
+     * elimina si se confirma.
+     * 
+     * @param e En el fragmento de código que proporcionó, el parámetro "e" de tipo "ActionEvent"
+     * representa el evento de acción que ocurrió cuando se hizo clic en el botón con el detector de
+     * acciones. Este parámetro se usa comúnmente en aplicaciones Java Swing para manejar las
+     * interacciones del usuario con componentes GUI, como botones.
+     */
     private void btnEliminarClick(ActionEvent e) throws Exception {
         if (JOptionPane.showConfirmDialog(this, "¿Está seguro que desea Eliminar?", "Eliminar...",
         JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
@@ -97,6 +135,14 @@ public class PnlCuenta extends JPanel implements ActionListener{
         }
     }
    
+    /**
+     * La función `btnGuardarClick` maneja el evento de guardar o actualizar un registro, validando los
+     * campos de entrada y mostrando mensajes de error en consecuencia.
+     * 
+     * @param e El parámetro `e` en el método `btnGuardarClick` representa el `ActionEvent` que se
+     * activa cuando se hace clic en el botón. Este evento contiene información sobre la acción que
+     * ocurrió, como el origen del evento (en este caso, el botón en el que se hizo clic).
+     */
     private void btnGuardarClick(ActionEvent e) throws HeadlessException, Exception {
         boolean cuentaNull = (cuenta == null);
         if (JOptionPane.showConfirmDialog(this, "¿Seguro que desea guardar?", (cuentaNull)?"Agregar...": "Actualizar...", 
@@ -137,6 +183,10 @@ public class PnlCuenta extends JPanel implements ActionListener{
         }
     }
 
+    /**
+     * La función muestra la tabla
+     * @throws Exception
+     */
     private void showTable() throws Exception {
         int tamanoPagina = 10,
             startIndex = ((nroPag - 1) * tamanoPagina) + 1,
@@ -145,6 +195,15 @@ public class PnlCuenta extends JPanel implements ActionListener{
         String[] header = {"Id", "IdPersonal", "Correo", "Contraseña", "Estado"};
         Object[][] data = new Object[endIndex - startIndex + 1][5];  
         int index = 0;
+        
+        /**
+         * El código anterior utiliza un bucle for para iterar sobre un rango de valores desde
+         * `startIndex` hasta `endIndex`. Dentro de cada iteración, crea una nueva instancia de
+         * `PersonalBL` y recupera un objeto `CuentaDTO` usando el método `getBy` de `cuentaBL`. Luego
+         * completa una matriz 2D de "datos" con información del objeto "CuentaDTO", como ID, nombre
+         * personal, correo electrónico, contraseña y estado. La variable de índice se utiliza para
+         * realizar un seguimiento de la posición dentro de la matriz.
+         */
         for(int i = startIndex; i <= endIndex; i++) {
             PersonalBL oPersonalBL = new PersonalBL();
             CuentaDTO oCuentaDTO = cuentaBL.getBy(i);
@@ -175,6 +234,15 @@ public class PnlCuenta extends JPanel implements ActionListener{
         pnlTabla.repaint();
 
         
+        
+        /**
+         * El código Java anterior agrega un ListSelectionListener al modelo de selección de una tabla.
+         * Cuando se selecciona una fila en la tabla, se llama al método valueChanged. Recupera la fila
+         * seleccionada y un valor de columna específico del modelo de tabla, lo convierte en un número
+         * entero y luego usa ese número entero para recuperar un objeto (cuenta) de una clase de
+         * lógica de negocios (cuentaBL). Finalmente, llama al método showData para mostrar los datos e
+         * imprime el valor seleccionado en la consola.
+         */
         table.getSelectionModel().addListSelectionListener(new ListSelectionListener(){ 
             @Override
             public void valueChanged(ListSelectionEvent e) {
@@ -194,6 +262,15 @@ public class PnlCuenta extends JPanel implements ActionListener{
         
     }
 
+    /**
+     * Esta función maneja diferentes acciones según el origen del evento y actualiza el número de
+     * página en consecuencia, luego carga y muestra datos.
+     * 
+     * @param e El parámetro `e` en el método `actionPerformed` de un `ActionListener` representa el
+     * `ActionEvent` que ocurrió. Proporciona información sobre el evento que desencadenó la acción,
+     * como el origen del evento (por ejemplo, un botón), el comando de acción y cualquier modificador
+     * (
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == btnIni)
@@ -249,6 +326,10 @@ public class PnlCuenta extends JPanel implements ActionListener{
  * Customize : Form
  ************************/ 
 
+    /**
+     * La función `customerSizeControl` configura un diseño de interfaz de usuario con componentes para
+     * visualización de datos, paginación y operaciones CRUD.
+     */
     public void customerSizeControl() {
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
