@@ -1,21 +1,32 @@
+/*
+|----------------------------------------|
+| (©) 2K24 EPN-FIS, All rights reserved. |
+| angeltomasbq@gmail.com   AngelTBarahona|
+|----------------------------------------|
+Autor : AngelTBarahona 
+Fecha : 27.feb.2k24
+src: Creacion del Login
+*/
 package UserInterface.Form;
 import javax.swing.*;
+
+import BusinessLogic.CuentaBL;
+import DataAccessComponent.DTO.CuentaDTO;
+import java.util.List;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 public class LoginPanel extends JPanel {
 
-    private JTextField usernameField;
-    private JPasswordField passwordField;
-    private JButton loginButton;
+    private JTextField      usernameField;
+    private JPasswordField  passwordField;
+    private JButton         loginButton;
+    private CuentaBL        cuentaBL;
 
-    public LoginPanel() {
+    public LoginPanel(CuentaBL cuentaBL) {
+        this.cuentaBL = new CuentaBL();
         initializeComponents();
         setupLayout();
         setupActions();
@@ -99,25 +110,21 @@ public class LoginPanel extends JPanel {
      * @param username
      * @param password
      * @return
-     *  Metodo  que se encarga de validar si el usuario y la contraseña son correctos o no.
+     *  Metodo  que se encarga de validar si el usuario y la contraseña son correctos o no desde el BL
      */
     private boolean authenticateUser(String username, String password) {
         boolean isAuthenticated = false;
-        String jdbcUrl = "jdbc:sqlite:database/PaccLogico.sqlite"; 
-        try (Connection connection = DriverManager.getConnection(jdbcUrl)) {
-            String query = "SELECT * FROM Cuenta WHERE Correo = ? AND Password = ?";
-            try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-                preparedStatement.setString(1, username);
-                preparedStatement.setString(2, password);
-
-                try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                    isAuthenticated = resultSet.next();
+        try {
+            List<CuentaDTO> cuentas = cuentaBL.getAll();
+            for (CuentaDTO cuenta : cuentas) {
+                if (cuenta.getCorreo().equals(username) && cuenta.getPassword().equals(password)) {
+                    isAuthenticated = true;
+                    break;
                 }
             }
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
-
         return isAuthenticated;
     }
     /**
