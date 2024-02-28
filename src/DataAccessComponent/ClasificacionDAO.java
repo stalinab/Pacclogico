@@ -25,7 +25,7 @@ public class ClasificacionDAO extends SQLiteDataHelper implements IDAO<Clasifica
             return true;
         } 
         catch (SQLException e) {
-            throw new Exception(getClass()+"getMaxIdClasificacion",e);
+            throw new PatException(e.getMessage(), getClass().getName(), "create()");
         }
     }
 
@@ -56,7 +56,7 @@ public class ClasificacionDAO extends SQLiteDataHelper implements IDAO<Clasifica
              lst.add(oDTOClasificacion);//cada vez que traemos una fila agregamos a una lista.
          }
      }catch(SQLException e){
-        throw new Exception(getClass()+"getMaxIdClasificacion",e);
+        throw new PatException(e.getMessage(), getClass().getName(), "readAll()");
      }
      return lst;
     }
@@ -86,7 +86,7 @@ public class ClasificacionDAO extends SQLiteDataHelper implements IDAO<Clasifica
                 oDTOClasificacion=oDTOClasificacion1;    }
         } 
         catch (SQLException e) {
-            throw new Exception(getClass()+"getMaxIdClasificacion",e);
+            throw new PatException(e.getMessage(), getClass().getName(), "read()");
         }
         return oDTOClasificacion;
     }
@@ -106,7 +106,7 @@ public class ClasificacionDAO extends SQLiteDataHelper implements IDAO<Clasifica
             return true;
         } 
         catch (SQLException e) {
-            throw new Exception(getClass()+"getMaxIdClasificacion",e);
+            throw new PatException(e.getMessage(), getClass().getName(), "update()");
         }
     }
 
@@ -122,7 +122,7 @@ public class ClasificacionDAO extends SQLiteDataHelper implements IDAO<Clasifica
             return true;
         } 
         catch (SQLException e) {
-            throw new Exception(getClass()+"getMaxIdClasificacion",e);
+            throw new PatException(e.getMessage(), getClass().getName(), "delete()");
         }
     }
 

@@ -26,7 +26,7 @@ public class HabitatDAO extends SQLiteDataHelper implements IDAO<HabitatDTO> {
             return true;
         } 
         catch (SQLException e) {
-            throw new Exception(getClass()+"getMaxIdHabitat",e);
+            throw new PatException(e.getMessage(), getClass().getName(), "create()");
         }
     }
 
@@ -57,7 +57,7 @@ public class HabitatDAO extends SQLiteDataHelper implements IDAO<HabitatDTO> {
              lst.add(oDTOClasificacion);//cada vez que traemos una fila agregamos a una lista.
          }
      }catch(SQLException e){
-        throw new Exception(getClass()+"getMaxIdHabitat",e);
+        throw new PatException(e.getMessage(), getClass().getName(), "readAll()");
      }
      return lst;
     }
@@ -87,7 +87,7 @@ public class HabitatDAO extends SQLiteDataHelper implements IDAO<HabitatDTO> {
                 oDTOClasificacion=oDTOClasificacion1;    }
         } 
         catch (SQLException e) {
-            throw new Exception(getClass()+"getMaxIdHabitat",e);
+            throw new PatException(e.getMessage(), getClass().getName(), "read()");
         }
         return oDTOClasificacion;
     }
@@ -107,7 +107,7 @@ public class HabitatDAO extends SQLiteDataHelper implements IDAO<HabitatDTO> {
             return true;
         } 
         catch (SQLException e) {
-            throw new Exception(getClass()+"getMaxIdHabitat",e);
+            throw new PatException(e.getMessage(), getClass().getName(), "update()");
         }
     }
 
@@ -123,7 +123,7 @@ public class HabitatDAO extends SQLiteDataHelper implements IDAO<HabitatDTO> {
             return true;
         } 
         catch (SQLException e) {
-            throw new Exception(getClass()+"getMaxIdHabitat",e);
+            throw new PatException(e.getMessage(), getClass().getName(), "delete()");
         }
     }
 

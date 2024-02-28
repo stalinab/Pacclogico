@@ -28,7 +28,7 @@ public class CuentaDAO extends SQLiteDataHelper implements IDAO<CuentaDTO> {
             return true;
         } 
         catch (SQLException e) {
-            throw new Exception(getClass()+"getMaxIdCuenta",e);
+            throw new PatException(e.getMessage(), getClass().getName(), "create()");
         }
     }
 
@@ -63,7 +63,7 @@ public class CuentaDAO extends SQLiteDataHelper implements IDAO<CuentaDTO> {
              lst.add(oDTOCuenta);//cada vez que traemos una fila agregamos a una lista.
          }
      }catch(SQLException e){
-        throw new Exception(getClass()+"getMaxIdCuenta",e);
+        throw new PatException(e.getMessage(), getClass().getName(), "readAll()");
      }
      return lst;
     }
@@ -97,7 +97,7 @@ public class CuentaDAO extends SQLiteDataHelper implements IDAO<CuentaDTO> {
                 oDTOCuenta=oDTOCuenta1;    }
         } 
         catch (SQLException e) {
-            throw new Exception(getClass()+"getMaxIdCuenta",e);
+            throw new PatException(e.getMessage(), getClass().getName(), "read()");
         }
         return oDTOCuenta;
     }
@@ -117,7 +117,7 @@ public class CuentaDAO extends SQLiteDataHelper implements IDAO<CuentaDTO> {
             return true;
         } 
         catch (SQLException e) {
-            throw new Exception(getClass()+"getMaxIdCuenta",e);
+            throw new PatException(e.getMessage(), getClass().getName(), "update()");
         }
     }
 
@@ -133,7 +133,7 @@ public class CuentaDAO extends SQLiteDataHelper implements IDAO<CuentaDTO> {
             return true;
         } 
         catch (SQLException e) {
-            throw new Exception(getClass()+"getMaxIdCuenta",e);
+            throw new PatException(e.getMessage(), getClass().getName(), "delete()");
         }
     }
 

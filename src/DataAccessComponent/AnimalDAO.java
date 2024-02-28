@@ -39,7 +39,7 @@ public class AnimalDAO extends SQLiteDataHelper implements IDAO <AnimalDTO> {
             }
         } 
         catch (SQLException e) {
-            throw e;    //new AppException(e, getClass(), "getAllSexo()");
+            throw new PatException(e.getMessage(), getClass().getName(), "readUs()");
         }
         return oS;
     }
@@ -70,7 +70,7 @@ public class AnimalDAO extends SQLiteDataHelper implements IDAO <AnimalDTO> {
             }
         } 
         catch (SQLException e) {
-            throw e;    //new AppException(e, getClass(), "getAllSexo()");
+            throw new PatException(e.getMessage(), getClass().getName(), "readUsAll()");
         }
         return lst; 
     }
@@ -103,7 +103,7 @@ public class AnimalDAO extends SQLiteDataHelper implements IDAO <AnimalDTO> {
             }
         } 
         catch (SQLException e) {
-            throw e;    //new AppException(e, getClass(), "getAllSexo()");
+            throw new PatException(e.getMessage(), getClass().getName(), "readAllEstructura()");
         }
         return lst; 
     }
@@ -119,7 +119,7 @@ public class AnimalDAO extends SQLiteDataHelper implements IDAO <AnimalDTO> {
             return true;
         } 
         catch (SQLException e) {
-            throw new Exception(getClass()+"getMaxIdAnimal",e);
+            throw new PatException(e.getMessage(), getClass().getName(), "create()");
         }
     }
     @Override
@@ -137,7 +137,7 @@ public class AnimalDAO extends SQLiteDataHelper implements IDAO <AnimalDTO> {
             return true;
         } 
         catch (SQLException e) {
-            throw new Exception(getClass()+"getMaxIdAnimal",e);
+            throw new PatException(e.getMessage(), getClass().getName(), "update()");
         }
     }
 
@@ -153,7 +153,7 @@ public class AnimalDAO extends SQLiteDataHelper implements IDAO <AnimalDTO> {
             return true;
         } 
         catch (SQLException e) {
-            throw new Exception(getClass()+"getMaxIdClasificacion",e);
+            throw new PatException(e.getMessage(), getClass().getName(), "delete()");
         }
     }
 
@@ -204,7 +204,7 @@ public class AnimalDAO extends SQLiteDataHelper implements IDAO <AnimalDTO> {
              lst.add(oDTOAnimal);//cada vez que traemos una fila agregamos a una lista.
          }
      }catch(SQLException e){
-        throw new Exception(getClass()+"getMaxIdClasificacion",e);
+        throw new PatException(e.getMessage(), getClass().getName(), "readAll()");
      }
      return lst;
     }
@@ -238,7 +238,7 @@ public class AnimalDAO extends SQLiteDataHelper implements IDAO <AnimalDTO> {
                 oDTOAnimal=oDTOAnimal1;    }
         } 
         catch (SQLException e) {
-            throw new Exception(getClass()+"getMaxIdClasificacion",e);
+            throw new PatException(e.getMessage(), getClass().getName(), "read()");
         }
         return oDTOAnimal;
     }
